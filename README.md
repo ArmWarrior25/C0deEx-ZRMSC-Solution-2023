@@ -27,7 +27,7 @@ This algorithm mimics the game manual instructions to find the expected score fo
 
 # predictor
 
-predictor: Given a set of active sites in the form of a string (ex. $2 4 5$) this function generates all possible pathways. Mathematically we can evaluate this total number of pathways considering at each active site by considering that at each site we can choose to duplicate, collect or do both. Thus the number of total pathways for a given set of active sites $a, b, c$, can be modeled as the number of ordered subsets of the string $+a \times a+b \times b+c \times c$. Basic combinatorics provides us with the total number of pathways being:
+Given a set of active sites in the form of a string (ex. $2 4 5$) this function generates all possible pathways. Mathematically we can evaluate this total number of pathways considering at each active site by considering that at each site we can choose to duplicate, collect or do both. Thus the number of total pathways for a given set of active sites $a, b, c$, can be modeled as the number of ordered subsets of the string $+a \times a+b \times b+c \times c$. Basic combinatorics provides us with the total number of pathways being:
 
 3. $\binom{6}{1} \times 1! + \binom{6}{2} \times 2! + \binom{6}{3} \times 3! + \binom{6}{4} \times 4! + \binom{6}{5} \times 5! + \binom{6}{6} \times 6! = 1956$
 
@@ -35,4 +35,4 @@ This total number of pathways is then trimmed to only include pathways with 24 s
 
 # createZRCode
 
-createZRCode: This algorithm takes in a set of active sites. Then using the previously defined predictor function it returns the optimal pathway and prints the set of Java scripts compatible with the Zero Robotics. These scripts can then be directly copied from the code and then implemented into the IDE text editor to run simulations.
+This algorithm takes in a set of active sites. Then using the previously defined predictor function it returns the optimal pathway and prints the set of Java scripts compatible with the Zero Robotics. These scripts can then be directly copied from the code and then implemented into the IDE text editor to run simulations.
