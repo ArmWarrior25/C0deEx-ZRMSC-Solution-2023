@@ -47,6 +47,6 @@ The function finally returns three outputs: the original set of active sites, th
 
 # createZRCode
 
-This algorithm takes in a set of all possible active sites. Then using the previously defined predictor function it returns the optimal pathway for any active sites and then generates code in JAVA as output that can then be directly copied from the output and pasted into the IDE text editor to run simulations. 
+This algorithm takes in a set of all possible active sites. Then using the previously defined predictor function it returns the optimal pathway for any active sites and then generates code in Java as output that can then be directly copied from the output and pasted into the IDE text editor to run simulations. 
 
 
