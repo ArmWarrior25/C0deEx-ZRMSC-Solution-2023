@@ -22,17 +22,31 @@ The net equation that can be used to evaluate the final score based on these sub
 The C0deEx Panthers' unique approach to this challenge included developing three novel programs:
 
 # compute_score
+ 
+This component written in Python mimics the game manual instructions to find the expected score for a given pathway. This component mimics what the ZR Simulation does with the added advantage that this is a programmatic component that can be called programmatically and executes in a split second, unlike the ZR Simulation where you need to trigger each simulation manually and need to wait for it to finish. 
 
-This algorithm mimics the game manual instructions to find the expected score for a given pathway. This pathway must be expressed in a string such as $+5*4+4$. This string codifies the process of moving to site 5 from the home base and collecting samples, moving to site 4 for duplication, and staying at site 4 to collect samples before returning home. Not only does this code return the expected scores, but also the expected battery, time, and collection subscores along with any expected bonuses or penalties. The battery and collection subscores along with penalties and bonuses are 100% accurate, but the time score has significant fluctuations. This however produces minimal impact to the final score due to the low weightage of the time score. After 100+ tests, we have found this score predictor function to be accurate to about $2$ percent, and both serve as a useful tool by itself and an essential subroutine for later codes. Not only can this function accurately display and predict final scores, but it is also able to display each of the subscores, penalties, and bonuses if passed an additional boolean parameter.
+This takes a pathway as an input string and must be expressed in a format e.g. $+5*4+4$. This string codifies the process of moving to site 5 from the home base and collecting samples, moving to site 4 for duplication, and staying at site 4 to collect samples before returning home. 
+Not only does this code return the expected scores, but also the expected battery, time, and collection subscores along with any expected bonuses or penalties. The battery and collection subscores along with penalties and bonuses are 100% accurate, but the time score has significant fluctuations. This however produces minimal impact to the final score due to the low weightage of the time score. After 100+ tests, we have found this score predictor function to be accurate to about $99$ percent, and both serve as a useful tool by itself and an essential subroutine for later codes. Not only can this function accurately display and predict final scores, but it is also able to display each of the subscores, penalties, and bonuses if passed an additional boolean parameter.
+
+
 
 # predictor
 
-Given a set of active sites in the form of a string (ex. $2 4 5$) this function generates all possible pathways. Mathematically we can evaluate this total number of pathways considering at each active site by considering that at each site we can choose to duplicate, collect or do both. Thus the number of total pathways for a given set of active sites $a, b, c$, can be modeled as the number of ordered subsets of the string $+a \times a+b \times b+c \times c$. Basic combinatorics provides us with the total number of pathways being:
+This Python component takes an input of a triplet (ex. $2 4 5$) and produces as output the most optimized path for the highest score possible. 
+
+
+The first part of this component produces all possible sets of paths given a set of triplets in the form of a string (ex. $2 4 5$) this function generates all possible pathways. Mathematically we can evaluate this total number of pathways considering at each active site by considering that at each site we can choose to duplicate, collect or do both. Thus the number of total pathways for a given set of active sites $a, b, c$, can be modeled as the number of ordered subsets of the string $+a \times a+b \times b+c \times c$. Basic combinatorics provides us with the total number of pathways being:
 
 3. $\binom{6}{1} \times 1! + \binom{6}{2} \times 2! + \binom{6}{3} \times 3! + \binom{6}{4} \times 4! + \binom{6}{5} \times 5! + \binom{6}{6} \times 6! = 1956$
 
-This total number of pathways is then trimmed to only include pathways with 24 samples or less. In our findings, this reduces the number of pathways to 600 or less. Finally, we evaluate compute_scores for each of the remaining pathways and take the pathway from the max total score from this set. The function finally returns three outputs: the original set of active sites, the optimal pathway, and the expected score.
+The second part of this component eliminates the extraneous paths and only keeps the pathways with 24 samples or less. In our findings, this reduces the number of pathways from 1956 to 600 or less for any set of triplets of Active sites. 
+
+Finally, we evaluate compute_scores for each of those 600 pathways and take the pathway from the max total score from this set. 
+
+The function finally returns three outputs: the original set of active sites, the optimal pathway, and the expected score.
 
 # createZRCode
 
-This algorithm takes in a set of active sites. Then using the previously defined predictor function it returns the optimal pathway and prints the set of Java scripts compatible with the Zero Robotics. These scripts can then be directly copied from the code and then implemented into the IDE text editor to run simulations.
+This algorithm takes in a set of all possible active sites. Then using the previously defined predictor function it returns the optimal pathway for any active sites and then generates code in JAVA as output that can then be directly copied from the output and pasted into the IDE text editor to run simulations. 
+
+
