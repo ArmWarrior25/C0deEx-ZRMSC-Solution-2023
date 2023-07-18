@@ -1,4 +1,4 @@
-# C0deEx-ZRMSC-Solution
+# C0deEx-ZRMSC-Solution-2023
 Zero Robotics is a unique and exciting program that combines space exploration, computer programming, and robotics education. It was originally initiated as a collaboration between the Massachusetts Institute of Technology (MIT) Space Systems Laboratory, the Defense Advanced Research Projects Agency (DARPA), and the National Aeronautics and Space Administration (NASA). The primary goal of Zero Robotics is to engage students in science, technology, engineering, and mathematics (STEM) fields through a competitive, space-themed programming competition. Zero Robotics main appeal is the abiltity to run unique codes on a custom MIT-IDE and the oppurtunity for top codes to run on experimental AstroBee and SPHERES satellites on the International Space Station.
 
 The C0deEx Panthers is a veteran team in the Zero Robotics Summer Challenge. They won the competition in 2019 by being the only team to successfully carry out all tasks on the International Space Station and were the national runner-ups in the following SPYSPHERES and Spelling Bee Challenges. This repository includes the C0deEx Panthers full analysis and algorithmic approach to the 2023 Zero Robotics Middle School Summer Challenge.
@@ -27,11 +27,7 @@ The C0deEx Panthers' unique approach to this challenge included developing three
 
 # predictor
 
-2. predictor: Given a set of active sites in the form of a string (ex. $2 4 5$) this function generates all possible pathways. Mathematically we can evaluate this total number of pathways considering at each active site by considering that at each site we can choose to duplicate, collect or do both. Thus the number of total pathways for a given set of active sites $a, b, c$, can be modelled as the number of ordered subsets of the string $+a \times a+b \times b+c \times c$. Basic combinatorics provides us with the total number of pathways being:
- 
-$\binom{6}{1} \times 1! + \binom{6}{2} \times 2! + \binom{6}{3} \times 3! + \binom{6}{4} \times 4! + \binom{6}{5} \times 5! + \binom{6}{6} \times 6! = 1956$
-
-This total number of pathways is then trimmed to only include pathways with 24 samples or less. In our findings this reduces the number of pathways to 600 or less. Finally we evaluate compute_scores for each of the remaining pathways, and take the pathway from the max total score from this set. The function finally returns three outputs: the original set of active sites, the optimal pathway, and the expect score.
+2. predictor: Given a set of active sites in the form of a string (ex. $2 4 5$) this function generates all possible pathways. Mathematically we can evaluate this total number of pathways considering at each active site by considering that at each site we can choose to duplicate, collect or do both. Thus the number of total pathways for a given set of active sites $a, b, c$, can be modelled as the number of ordered subsets of the string $+a \times a+b \times b+c \times c$. Basic combinatorics provides us with the total number of pathways being: $\binom{6}{1} \times 1! + \binom{6}{2} \times 2! + \binom{6}{3} \times 3! + \binom{6}{4} \times 4! + \binom{6}{5} \times 5! + \binom{6}{6} \times 6! = 1956$ This total number of pathways is then trimmed to only include pathways with 24 samples or less. In our findings this reduces the number of pathways to 600 or less. Finally we evaluate compute_scores for each of the remaining pathways, and take the pathway from the max total score from this set. The function finally returns three outputs: the original set of active sites, the optimal pathway, and the expect score.
 
 # createZRCode
 
